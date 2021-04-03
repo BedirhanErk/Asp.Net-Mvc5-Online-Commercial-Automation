@@ -1,0 +1,157 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Message>
+@{
+    ViewBag.Title = "Trash";
+    Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+}
+<br>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/web4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/web4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/web4/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Trash</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="/CurrentPanel/NewMessage" class="btn btn-primary btn-block mb-3">Compose</a>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Folders</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="nav nav-pills flex-column">
+                            <li class="nav-item active">
+                                <a href="/CurrentPanel/IncomingMessages/" class="nav-link">
+                                    <i class="fas fa-inbox"></i> Inbox
+                                    <span class="badge bg-gradient-blue float-right">@ViewBag.d1</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/CurrentPanel/OutgoingMessages/" class="nav-link">
+                                    <i class="far fa-envelope"></i> Sent
+                                    <span class="badge bg-gradient-gray float-right">@ViewBag.d2</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/CurrentPanel/Starry" class="nav-link">
+                                    <i class="fas fa-star"></i> Starry
+                                    <span class="badge bg-gradient-navy float-right">@ViewBag.starry</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/CurrentPanel/Trash/" class="nav-link">
+                                    <i class="far fa-trash-alt"></i> Trash
+                                    <span class="badge bg-gradient-red float-right">@ViewBag.d3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Trash</h3>
+                        <div class="card-tools">
+                            <form action="/CurrentPanel/SearchMail" class="sm" method="get">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="q" class="form-control" placeholder="Search Mail" required="">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive mailbox-messages">
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        <tr>
+                                            <td width="1%">
+                                                <a class="btn btn-default btn-sm" href="/CurrentPanel/DeleteTrash/@x.MessageId" style="color:black"><i class="far fa-trash-alt"></i></a>
+                                            </td>
+                                            <td width="1%">
+                                                <a class="btn btn-default btn-sm" href="/CurrentPanel/TakeItBack/@x.MessageId" style="color:black"><i class="fas fa-reply"></i></a>
+                                            </td>
+                                            <td class="mailbox-name"><a href="/CurrentPanel/MessageDetails/@x.MessageId">@x.Sender</a></td>
+                                            <td class="mailbox-subject">
+                                                <a style="color:black" href="/CurrentPanel/MessageDetails/@x.MessageId"><b style="color:black">@x.Title </b>- @x.Content.ToString()</a>
+                                            </td>
+                                            <td class="mailbox-attachment"></td>
+                                            <td class="mailbox-date"><a style="color:black" href="/CurrentPanel/MessageDetails/@x.MessageId">@x.Date.ToShortDateString()</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+    <script src="~/web4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/web4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/web4/dist/js/adminlte.min.js"></script>
+    <script>
+        $(function () {
+            $('.checkbox-toggle').click(function () {
+                var clicks = $(this).data('clicks')
+                if (clicks) {
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+                    $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+                } else {
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+                    $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+                }
+                $(this).data('clicks', !clicks)
+            })
+            $('.mailbox-star').click(function (e) {
+                e.preventDefault()
+                var $this = $(this).find('a > i')
+                var glyph = $this.hasClass('glyphicon')
+                var fa = $this.hasClass('fa')
+
+                if (glyph) {
+                    $this.toggleClass('glyphicon-star')
+                    $this.toggleClass('glyphicon-star-empty')
+                }
+
+                if (fa) {
+                    $this.toggleClass('fa-star')
+                    $this.toggleClass('fa-star-o')
+                }
+            })
+        })
+    </script>
+    <script src="../../dist/js/demo.js"></script>
+</body>
+</html>

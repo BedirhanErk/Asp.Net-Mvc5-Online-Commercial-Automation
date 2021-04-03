@@ -1,0 +1,35 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Staff
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>New Staff</h2>
+<br />
+@using (Html.BeginForm("Add", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+        @Html.LabelFor(x => x.StaffName)
+        @Html.TextBoxFor(x => x.StaffName, new { @class = "form-control", @required="" })
+        <br />
+        @Html.LabelFor(x => x.StaffSurname)
+        @Html.TextBoxFor(x => x.StaffSurname, new { @class = "form-control", @required = "" })
+        <br />
+        <br />
+        @Html.LabelFor(x => x.StaffImage)
+        <input type="file" name="StaffImage" />
+        <br />
+        <br />
+        @Html.LabelFor(x => x.Department)
+        @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.value2, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Address)
+        @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Phone)
+        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary" style="width:100px"><i class="fas fa-plus"></i> Add</button>
+        <a class="btn btn-secondary" href="/Staff/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+    </form>
+}

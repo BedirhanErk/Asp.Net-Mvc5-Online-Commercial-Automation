@@ -1,0 +1,25 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.ToDoList
+@{
+    ViewBag.Title = "BringToDoList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Update</h2>
+<br />
+@using (Html.BeginForm("UpdateToDoList", "ToDoList", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Id)
+        @Html.LabelFor(x => x.Title)
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @required = "" })
+        <br />
+        @Html.LabelFor(x => x.Date)
+        @Html.TextBoxFor(x => x.Date, new { @class = "form-control", @required = "" })
+        <br />
+        @Html.LabelFor(x => x.Hour)
+        @Html.TextBoxFor(x => x.Hour, new { @class = "form-control", @required = "" })
+        <br />
+        <button class="btn btn-primary" style="width:100px"><i class="fas fa-pencil-alt"></i> Update</button>
+        <a class="btn btn-secondary" href="/ToDoList/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i>  Cancel</a>
+    </div>
+}

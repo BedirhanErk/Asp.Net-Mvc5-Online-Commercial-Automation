@@ -1,0 +1,27 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Cargo
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Cargo Entry</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.TrackingCode)
+    <input type="text" value="@ViewBag.tcode" class="form-control" name="TrackingCode" readonly />
+    <br />
+    @Html.LabelFor(x => x.Staff)
+    @Html.TextBoxFor(x => x.Staff, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Staff, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Receiver)
+    @Html.TextBoxFor(x => x.Receiver, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Receiver, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Date)
+    <input type="text" name="Date" value="@DateTime.Now" class="form-control" readonly />
+    <br />
+    <button class="btn btn-primary" style="width:inherit"><i class="fas fa-plus"></i> New Cargo Entry</button>
+    <a class="btn btn-secondary" href="/Cargo/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+</form>
+

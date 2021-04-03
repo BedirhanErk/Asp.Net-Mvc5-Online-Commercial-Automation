@@ -1,0 +1,33 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Category
+@{
+    ViewBag.Title = "UpdateCategories";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Update Home Categories</h2>
+<br />
+@using (Html.BeginForm("UpdateCategories", "ToDoList", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-group row">
+        <h3 class="col-md-5">Category Name</h3>
+        <div class="col-md-4"><h4>@Model.CategoryName</h4></div>
+    </div>
+    <br />
+    <div class="form-group row">
+        <h3 class="col-md-4">Image</h3>
+        <div class="col-md-4"><input type="file" name="Image" /></div>
+    </div>
+    <br />
+    <div class="form-group row">
+        <h3 class="col-md-5">Home Page Visibility</h3>
+        <div class="col-md-2">
+            @Html.CheckBoxFor(x => x.OnHome, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-pencil-alt"></i> Update</button>
+    <a class="btn btn-secondary" href="/ToDoList/Categories" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+}
+<br />
+

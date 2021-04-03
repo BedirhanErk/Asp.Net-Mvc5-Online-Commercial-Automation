@@ -1,0 +1,193 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Wanted</title>
+    <link href="~/HomeTemplate/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/HomeTemplate/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/HomeTemplate/css/font-awesome.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="New Shop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="~/HomeTemplate/js/jquery.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'>
+    <script src="~/HomeTemplate/js/main.js"></script>
+    <script src="~/HomeTemplate/js/responsiveslides.min.js"></script>
+    <script>
+        $(function () {
+            $("#slider").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                pager: true,
+            });
+        });
+    </script>
+    <script type="text/javascript" src="~/HomeTemplate/js/bootstrap-3.1.1.min.js"></script>
+    <script src="~/HomeTemplate/js/simpleCart.min.js"></script>
+    <script src="~/HomeTemplate/js/jstarbox.js"></script>
+    <link rel="stylesheet" href="~/HomeTemplate/css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript">
+        jQuery(function () {
+            jQuery('.starbox').each(function () {
+                var starbox = jQuery(this);
+                starbox.starbox({
+                    average: starbox.attr('data-start-value'),
+                    changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+                    ghosting: starbox.hasClass('ghosting'),
+                    autoUpdateAverage: starbox.hasClass('autoupdate'),
+                    buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+                    stars: starbox.attr('data-star-count') || 5
+                }).bind('starbox-value-changed', function (event, value) {
+                    if (starbox.hasClass('random')) {
+                        var val = Math.random();
+                        starbox.next().text(' ' + val);
+                        return val;
+                    }
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="top-left">
+                    <a href="/Contact/Index"> Help  <i class="glyphicon glyphicon-phone" aria-hidden="true"></i> +90 539 899 5545</a>
+                </div>
+                <div class="top-right">
+                    <ul>
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                @Html.ActionLink(HttpContext.Current.User.Identity.Name, "Index", "CurrentPanel", null, null)
+                            </li>
+                            <li><a href="/Login/Logout">Logout</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/Login/Index">Login</a></li>
+                            <li><a href="/Login/Register"> Register </a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="heder-bottom">
+            <div class="container">
+                <div class="logo-nav">
+                    <div class="logo-nav-left">
+                        <h1><a href="/HomePage/Index">Wanted <span>Shop anywhere</span></a></h1>
+                    </div>
+                    <div class="logo-nav-left1">
+                        <nav class="navbar navbar-default">
+                            <div class="navbar-header nav_2">
+                                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="/HomePage/Index" class="act">Home</a></li>
+                                    <li class="active"><a href="/List/Index" class="act">Products</a></li>
+                                    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                    {
+                                        <li class="active"><a href="/CurrentPanel/MyOrder" class="act">My Orders</a></li>
+                                        <li class="active"><a href="/CurrentPanel/IncomingMessages" class="act">Messagess</a></li>
+                                    }
+                                    <li class="active"><a href="/Homepage/AboutUs" class="act">About Us</a></li>
+                                    <li><a href="/Contact/Index">Help</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                    @* Search *@
+                    <div class="logo-nav-right">
+                        <ul class="cd-header-buttons" style="position:absolute;right:70px">
+                            <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+                        </ul>
+                        <div id="cd-search" class="cd-search">
+                            <form action="/List/SearchProduct" method="get">
+                                <input name="word" type="search" placeholder="Search for a Product..." required="">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div class="footer-w3l">
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-3 footer-grid">
+                    <h4>Wanted </h4>
+                    <p>
+                        With Wanted, you can make your technology shopping faster, easier and cheaper. Thank you for choosing us.
+                    </p>
+                    <div class="social-icon">
+                        <a href="https://www.facebook.com/people/Bedirhan-Erk%C4%B1l%C4%B1%C3%A7/100051665255398"><i class="icon"></i></a>
+                        <a href="https://twitter.com/bedirhan_erk"><i class="icon1"></i></a>
+                        <a href="https://www.linkedin.com/in/bedirhan-erk%C4%B1l%C4%B1%C3%A7-7221761a1/"><i class="icon3"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="/List/Product/4">Sound and Music</a></li>
+                        <li><a href="/List/Product/1"> Telephone </a></li>
+                        <li><a href="/List/Product/2"> Computer </a></li>
+                        <li><a href="/List/Product/68"> TV and Display </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="/HomePage/Index">Home</a></li>
+                        <li><a href="/List/Index">Products</a></li>
+                        <li><a href="/Homepage/AboutUs">About Us</a></li>
+                        <li><a href="/Contact/Index">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid foot">
+                    <h4>Contacts</h4>
+                    <ul>
+                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><a href="#">Yozgat/Merkez, Turkey</a></li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i><a href="#">0 539 899 5545</a></li>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:erkilicbedirhan@gmail.com"> erkilicbedirhan@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="copy-section">
+        <div class="container">
+            <div class="copy-left">
+                <p>&copy; 2021 Wanted . All rights reserved | Developed by <a href="https://www.bedirhanerkilic.com/">Bedirhan Erkılıç</a></p>
+            </div>
+            <div class="copy-right">
+                <img src="~/HomeTemplate/images/card.png" alt="" />
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</body>
+</html>

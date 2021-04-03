@@ -1,0 +1,21 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<CargoTracking>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Explanation</th>
+        <th>Date</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Explanation</td>
+            <td>@x.date.ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>
+<a class="btn btn-secondary" href="/Cargo/Index" style="width:100px;color:white;position:absolute;right:25px"><i class="fas fa-backspace"></i>  Cancel</a>

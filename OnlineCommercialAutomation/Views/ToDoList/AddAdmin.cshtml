@@ -1,0 +1,23 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Admin
+@{
+    ViewBag.Title = "AddAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Add Admin</h2>
+<br />
+<form class="form-group" method="post">
+    <label>User Name</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @required="" })
+    <br />
+    @Html.LabelFor(x => x.Password)
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @required = "" })
+    <br />
+    @Html.LabelFor(x => x.Authority)
+    @Html.DropDownListFor(x => x.Authority, (new SelectList(ViewBag.Authority)), new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-plus"></i> Add</button>
+    <a class="btn btn-secondary" href="/ToDoList/Admins" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+</form>
+
+

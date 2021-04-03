@@ -1,0 +1,27 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Message
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Update Announcement</h2>
+<br />
+@using (Html.BeginForm("Update", "Announcement", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.MessageId)
+        @Html.LabelFor(x => x.Title)
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @required = "" })
+        <br />
+        @Html.LabelFor(x => x.Content)
+        @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @required = "" })
+        <br />
+        @Html.LabelFor(x => x.Date)
+        <input type="text" name="Date" value="@DateTime.Now" class="form-control" readonly />
+    </div>
+    <button class="btn btn-primary" style="width:100px" id="btn1"><i class="fas fa-pencil-alt"></i> Update</button>
+    <a class="btn btn-secondary" href="/Announcement/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+}
+
+
+

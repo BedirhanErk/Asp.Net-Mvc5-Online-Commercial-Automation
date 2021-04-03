@@ -1,0 +1,53 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Contact
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE HTML>
+<html>
+<body>
+    <div class="content">
+        <div class="mail-w3ls">
+            <div class="container">
+                <h2 class="tittle">Help Form</h2>
+                <div class="mail-grids">
+                    <div class="mail-top">
+                        <div class="col-md-4 mail-grid">
+                            <i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
+                            <h5>Address</h5>
+                            <p>
+                                Yukarı Çatak Neighborhood - Ümit 1.Street - No:13
+                            </p>
+                        </div>
+                        <div class="col-md-4 mail-grid">
+                            <i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
+                            <h5>Phone</h5>
+                            <p>Telephone:  +90 539 899 5545</p>
+                        </div>
+                        <div class="col-md-4 mail-grid">
+                            <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+                            <h5>E-mail</h5>
+                            <p>E-mail:<a href="mailto:erkilicbedirhan@gmail.com"> erkilicbedirhan@gmail.com</a></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="map-w3">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1251.6976673262707!2d34.804321882506926!3d39.82291730985767!3m2!1i1024!2i768!4f13.1!5e0!3m2!1str!2str!4v1616525190719!5m2!1str!2str" allowfullscreen></iframe>
+                    </div>
+                    <div class="mail-bottom">
+                        <h4>Contact Us</h4>
+                        <form action="/Contact/Index" method="post">
+                            <input type="text" value="Name Surname" name="NameSurname" id="NameSurname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'NameSurname';}" required="">
+                            <input type="email" value="Email" id="Email" name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                            <input type="text" value="Subject" id="Subject" name="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}" required="">
+                            <textarea name="Message" id="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+                            <input type="submit" value="Submit" onclick="return confirm('You will be contacted as soon as possible.')">
+                            <input type="reset" value="Clear">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

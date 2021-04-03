@@ -1,0 +1,63 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Product>
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="~/Web3/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Web3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Web3/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Web3/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Web3/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Web3/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Web3/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Web3/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/Web3/css/aos.css">
+    <link rel="stylesheet" href="~/Web3/css/jquery.scrollbar.css">
+    <link rel="stylesheet" href="~/Web3/css/fancybox.min.css">
+    <link rel="stylesheet" href="~/Web3/css/swiper.min.css">
+    <link rel="stylesheet" href="~/Web3/css/style.css">
+</head>
+<body>
+    <br />
+    <div class="site-wrap">
+        <main class="main-content">
+            <div class="container-fluid photos">
+                <div class="row align-items-stretch">
+                    @foreach (var x in Model)
+                    {
+                        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
+                            <a href="@x.ProductImage" class="d-block photo-item" data-fancybox="gallery">
+                                <img src="@x.ProductImage" />
+                                <div class="photo-text-more">
+                                    <span class="icon icon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="~/Web3/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Web3/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/Web3/js/jquery-ui.js"></script>
+    <script src="~/Web3/js/popper.min.js"></script>
+    <script src="~/Web3/js/bootstrap.min.js"></script>
+    <script src="~/Web3/js/owl.carousel.min.js"></script>
+    <script src="~/Web3/js/jquery.countdown.min.js"></script>
+    <script src="~/Web3/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Web3/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Web3/js/aos.js"></script>
+    <script src="~/Web3/js/jquery.fancybox.min.js"></script>
+    <script src="~/Web3/js/swiper.min.js"></script>
+    <script src="~/Web3/js/jquery.scrollbar.js"></script>
+    <script src="~/Web3/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Contact>
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Help Messages</h2>
+<br />
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Delete</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Reply</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td><a href="/Contact/ContactDelete/@x.Id" class="text-danger" data-toggle="tooltip" data-placement="top" onclick="return confirm('Are you sure you want to delete the message?')" title="Delete"><strong>X</strong></a></td>
+            <td>@x.NameSurname</td>
+            <td>@x.Email</td>
+            <td>@x.Subject</td>
+            <td>@x.Message</td>
+            <td><a class="btn btn-primary" href="mailto:@x.Email"><i class="fas fa-reply"></i> Reply</a></td>
+        </tr>
+    }
+</table>

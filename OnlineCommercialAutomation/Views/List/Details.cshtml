@@ -1,0 +1,93 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script defer src="~/HomeTemplate/js/jquery.flexslider.js"></script>
+    <link rel="stylesheet" href="~/HomeTemplate/css/flexslider.css" type="text/css" media="screen" />
+    <script src="~/HomeTemplate/js/imagezoom.js"></script>
+    <script>
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="content">
+        <div class="single-wl3">
+            <div class="container">
+                <div class="single-grids">
+
+                    @Html.Action("Categories", "List")
+
+                    <div class="col-md-9 single-grid">
+                        <div clas="single-top">
+                            <div class="single-left">
+                                <div class="flexslider">
+                                    <ul class="slides">
+                                        <li data-thumb="">
+                                            <div class="thumb-image">
+                                                <img src="@Model.ProductImage" data-imagezoom="true" class="img-responsive">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="single-right simpleCart_shelfItem">
+                                <h4>@Model.ProductsName</h4>
+                                <div class="color-quality"><h6>Brand : @Model.Brand</h6></div>
+                                <p class="price item_price">@Model.SalesPrice ₺</p>
+                                @if (Model.Installment == 0)
+                                {
+
+                                }
+                                else
+                                {
+                                    <div class="color-quality"><h6>This product has @Model.Installment installments. </h6></div>
+                                }
+                                <div class="description">
+                                    <p><span>Description : </span> @Model.Explanation</p>
+                                </div>
+                                @* Quantity *@
+                                <div class="color-quality">
+                                    @*<div class="quantity">
+                <div class="quantity-select">
+                    <div class="entry value-minus1">&nbsp;</div>
+                    <div class="entry value1"><span>1</span></div>
+                    <div class="entry value-plus1 active">&nbsp;</div>
+                </div>
+            </div>*@
+                                    <!--quantity-->
+                                    <!--<script>
+            $('.value-plus1').on('click', function () {
+                var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) + 1;
+                divUpd.text(newVal);
+            });
+
+            $('.value-minus1').on('click', function () {
+                var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) - 1;
+                if (newVal >= 1) divUpd.text(newVal);
+            });
+        </script>-->
+                                    <!--quantity-->
+                                </div>
+                                @* Add To Cart *@
+                                @*<div class="women">
+            <span class="size">XL / XXL / S </span>
+            <a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+        </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

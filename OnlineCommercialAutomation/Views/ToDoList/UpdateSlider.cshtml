@@ -1,0 +1,28 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.HomeImage
+@{
+    ViewBag.Title = "UpdateSlider";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Update Slider</h2>
+<br />
+@using (Html.BeginForm("UpdateSlider", "ToDoList", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-group row">
+        <h3 class="col-md-4">Image</h3>
+        <div class="col-md-4"><input type="file" name="SliderImage" /></div>
+    </div>
+    <br />
+    <div class="form-group row">
+        <h3 class="col-md-5">Home Page Visibility</h3>
+        <div class="col-md-2">
+            @Html.CheckBoxFor(x => x.Slider, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-pencil-alt"></i> Update</button>
+    <a class="btn btn-secondary" href="/ToDoList/Slider" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+}
+<br />
+

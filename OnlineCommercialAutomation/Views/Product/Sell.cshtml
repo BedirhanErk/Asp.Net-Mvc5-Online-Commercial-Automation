@@ -1,0 +1,43 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.SalesMovement
+@{
+    ViewBag.Title = "Sell";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Sell</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.Product)
+    <input type="text" name="ProductId" value="@ViewBag.valuee2" class="form-control" readonly />
+    <br />
+    @Html.LabelFor(x => x.Staff)
+    @Html.DropDownListFor(x => x.StaffId, (List<SelectListItem>)ViewBag.valuee1, new { @class = "form-control" })
+    <br />
+    <label>Customer</label>
+    @Html.DropDownListFor(x => x.CurrentId, (List<SelectListItem>)ViewBag.current, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Piece)
+    <input type="number" class="form-control" max="10" min="1" placeholder="Enter Number Pls." id="txt1" onchange="multiply();" name="Piece" required="" />
+    <br />
+    @Html.LabelFor(x => x.Price)
+    <input type="text" name="Price" value="@ViewBag.valuee3" class="form-control" id="txt2" onkeyup="multiply();" />
+    <br />
+    @Html.LabelFor(x => x.TotalAmount)
+    <input type="text" id="txt3" name="TotalAmount" class="form-control" readonly />
+    <br />
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-credit-card"></i> Sell</button>
+    <a class="btn btn-secondary" href="/Product/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+</form>
+
+<script>
+    function multiply() {
+        var number1 = document.getElementById('txt1').value;
+        var number2 = document.getElementById('txt2').value;
+        var result = parseInt(number1) * parseInt(number2);
+        if (!isNaN(result)) {
+            document.getElementById('txt3').value = result;
+        }
+    }
+</script>
+
+

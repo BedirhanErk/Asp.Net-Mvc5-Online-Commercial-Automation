@@ -1,0 +1,293 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Dynamic
+@{
+    ViewBag.Title = "Dynamic";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+@* Step One *@
+<div class="card card-default">
+    <div class="card-header">
+        <div class="row">
+            <h2 class="card-title pull-left" style="margin-left:10px;">
+                <strong>Invoice Item Transactions</strong>
+            </h2>
+            <button style="position:absolute;right:22px" class="btn btn-primary" onclick="addNewOrder()"><i class="fas fa-plus"></i> Invoice Entry</button>
+        </div>
+    </div>
+
+    @*Invoice List*@
+    @foreach (var x in Model.value1)
+    {
+        <div class="card-body">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>Serial-Sequence : @x.InvoiceSerialNo @x.InvoiceSequenceNo </td>
+                        <td>Date : @x.Date.ToString("dd/MM/yyyy") </td>
+                        <td>Current : @x.DeliveringPerson </td>
+                        <td>Tax Administration : @x.TaxAdministration </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Explanation</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                    @{
+                                        var totalBill = 0;
+                                    }
+                                    @if (x.InvoiceContents != null)
+                                    {
+                                        foreach (var y in x.InvoiceContents)
+                                        {
+                                            <tr>
+                                                <td>@y.Explanation</td>
+                                                <td>@y.Quantity</td>
+                                                <td>@y.UnitPrice</td>
+                                                <td>@y.Amount</td>
+                                            </tr>
+                                            totalBill = totalBill + @Convert.ToInt32(y.Amount);
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                </tbody>
+                            </table>
+                            <span class="pull-right" style="position:absolute;right:50px"><strong>Invoice Total Amount :  </strong> @totalBill</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+<br /><br />
+@* Step Two *@
+<div class="modal fade" id="newOrderModal">
+    <div class="modal-dialog modal-lg" style=" width: 900px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 style="position:absolute;left:14px">New Invoice Entry</h4>
+            </div>
+            <form id="NewOrderForm">
+                <div class="modal-body">
+
+                    @*Invoice Details*@
+                    <h5 style="color:#ff6347;margin-left:5px">Invoice Details</h5>
+                    <hr />
+                    <div class="form-horizontal">
+                        <input type="hidden" id="id" />
+                        <div class="row">
+                            <label class="control-label col-md-2">
+                                Serial No
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="InvoiceSerialNo" name="InvoiceSerialNo" placeholder="Serial No" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2">
+                                Sequence No
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="InvoiceSequenceNo" name="InvoiceSequenceNo" placeholder="Sequence No" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="control-label col-md-2">
+                                Date
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="Date" name="Date" placeholder="Date" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2">
+                                Tax Administration
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="TaxAdministration" name="TaxAdministration" placeholder="Tax Administration" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="control-label col-md-2">
+                                Hour
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="Hour" name="Hour" placeholder="Hour" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2">
+                                Delivering Person
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="DeliveringPerson" name="DeliveringPerson" placeholder="Delivering Person" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="control-label col-md-2">
+                                ReceiverPerson
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="ReceiverPerson" name="ReceiverPerson" placeholder="Receiver Person" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2">
+                                Total
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="Total" name="Total" placeholder="Total" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    @*Invoice Items*@
+                    <h5 style="margin-top:10px;color:#ff6347;margin-left:5px">Invoice Items</h5>
+                    <hr />
+                    <div class="form-horizontal">
+                        <input type="hidden" id="Id" />
+                        <div class="row">
+                            <label class="control-label col-md-2">
+                                Explanation
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="Explanation" name="Explanation" placeholder="Enter Product Description" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2">
+                                Quantity
+                            </label>
+                            <div class="col-md-4">
+                                <input type="number" id="Quantity" name="Quantity" placeholder="Quantity" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="control-label col-md-2">
+                                Unit Price
+                            </label>
+                            <div class="col-md-4">
+                                <input type="number" id="UnitPrice" name="UnitPrice" placeholder="Unit Price" class="form-control" />
+                            </div>
+                            <div class="" style="position:absolute;right:18px;color:white">
+                                <a id="AddToTheList" class="btn btn-primary"><i class="fas fa-plus"></i> Add To The List</a>
+                            </div>
+                        </div>
+                        <br />
+                        <table id="detailsTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">Explanation</th>
+                                    <th style="width:20%">Quantity</th>
+                                    <th style="width:20%">Unit Price</th>
+                                    <th style="width:25%">Amount</th>
+                                    <th style="width:0%"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="saveOrder" type="submit" class="btn btn-danger">Save Invoice</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@* Step Three *@
+@section scripts{
+    <script>
+        function addNewOrder() {
+            $("#newOrderModal").modal();
+        }
+
+        //Add to the list
+        $("#AddToTheList").click(function (e) {
+            e.preventDefault();
+            if ($.trim($("#Explanation").val()) == "" || $.trim($("#Quantity").val()) == "" || $.trim($("#UnitPrice").val()) == "") return;
+            var Explanation = $("#Explanation").val(),
+                Quantity = $("#Quantity").val(),
+                UnitPrice = $("#UnitPrice").val(),
+                detailsTableBody = $("#detailsTable tbody");
+            var values = '<tr><td>' + Explanation + '</td><td>' + Quantity + '</td><td>' + UnitPrice + '</td><td>' + (parseFloat(UnitPrice) * parseInt(Quantity)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+            detailsTableBody.append(values);
+            clearItem();
+        });
+
+        //Clear Item
+        function clearItem() {
+            $("#Explanation").val('');
+            $("#Quantity").val('');
+            $("#UnitPrice").val('');
+        }
+
+        // Delete
+        $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+
+        //Save Invoice
+        function saveOrder(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Invoice/SaveInvoice",
+                data: data,
+                success: function (result) {
+                    alert(result);
+                    location.reload();
+                },
+                error: function () {
+                    alert("Error!")
+                }
+            });
+        }
+
+        //Save Invoice
+        $("#saveOrder").click(function (e) {
+            e.preventDefault();
+            var orderArr = [];
+            orderArr.length = 0;
+            $.each($("#detailsTable tbody tr"), function () {
+                orderArr.push({
+                    Explanation: $(this).find('td:eq(0)').html(),
+                    Quantity: $(this).find('td:eq(1)').html(),
+                    UnitPrice: $(this).find('td:eq(2)').html(),
+                    Amount: $(this).find('td:eq(3)').html()
+                });
+            });
+            var data = JSON.stringify({
+                InvoiceSerialNo: $("#InvoiceSerialNo").val(),
+                InvoiceSequenceNo: $("#InvoiceSequenceNo").val(),
+                Date: $("#Date").val(),
+                TaxAdministration: $("#TaxAdministration").val(),
+                Hour: $("#Hour").val(),
+                DeliveringPerson: $("#DeliveringPerson").val(),
+                ReceiverPerson: $("#ReceiverPerson").val(),
+                Total: $("#Total").val(),
+                contents: orderArr
+            });
+            $.when(saveOrder(data)).then(function (response) {
+                console.log(response);
+            }).fail(function (err) {
+                console.log(err);
+            });
+        });
+    </script>
+}

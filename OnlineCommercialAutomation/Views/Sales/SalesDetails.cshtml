@@ -1,0 +1,35 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<SalesMovement>
+@{
+    ViewBag.Title = "SalesDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>
+    Sales Details
+    <a class="btn btn-secondary" href="/Sales/Index" style="width:100px;color:white;position:absolute;right:25px"><i class="fas fa-backspace"></i> Cancel</a>
+</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Product</th>
+        <th>Current</th>
+        <th>Staff</th>
+        <th>Price</th>
+        <th>Piece</th>
+        <th>Total</th>
+        <th>Date</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Product.ProductsName</td>
+            <td>@x.Current.CurrentsName @x.Current.CurrentsSurname</td>
+            <td>@x.Staff.StaffName @x.Staff.StaffSurname</td>
+            <td>@x.Price ₺</td>
+            <td>@x.Piece</td>
+            <td>@x.TotalAmount ₺</td>
+            <td>@x.Date.ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>

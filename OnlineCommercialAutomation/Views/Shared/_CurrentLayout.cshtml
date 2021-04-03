@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Current Dashbord</title>
+    <link href="~/webpanel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/webpanel/css/simple-sidebar.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading"><i class="fas fa-users" style="margin-right:5px"></i> Current Dashbord</div>
+            <div class="list-group list-group-flush">
+                <a href="/CurrentPanel/Index" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user" style="margin-right:5px"></i> My Profile</a>
+                <a href="/CurrentPanel/MyOrder" class="list-group-item list-group-item-action bg-light"><i style="margin-right:5px" class="fas fa-shopping-cart "></i> My Orders</a>
+                <a href="/CurrentPanel/CargoTracking" class="list-group-item list-group-item-action bg-light"><i style="margin-right:5px" class="fas fa-truck"></i> Cargo Tracking</a>
+                <a href="/CurrentPanel/IncomingMessages" class="list-group-item list-group-item-action bg-light"><i style="margin-right:5px" class="fas fa-comment-dots"></i> Messages</a>
+                <a href="/HomePage/Index" class="list-group-item list-group-item-action bg-light"><i style="margin-right:5px" class="fas fa-arrow-circle-left"></i> Back to Site</a>
+                <a href="/Login/Logout" class="list-group-item list-group-item-action bg-light"><i class="fas fa-power-off" style="margin-right:5px"></i> Sign out</a>
+            </div>
+        </div>
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle"><i class="fas fa-bars"></i></button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li  style="margin-top:6px;margin-right:5px">
+                            @Html.ActionLink(HttpContext.Current.User.Identity.Name, "Index", "CurrentPanel", null, null)
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/CurrentPanel/Index"><i class="fas fa-user"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/CurrentPanel/MyOrder"><i class="fas fa-shopping-cart"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/CurrentPanel/IncomingMessages"><i class="fas fa-comment-dots"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/CurrentPanel/CargoTracking"><i class="fas fa-truck"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Login/Logout"><i class="fas fa-power-off"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="~/webpanel/vendor/jquery/jquery.min.js"></script>
+    <script src="~/webpanel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+    $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });</script>
+</body>
+</html>

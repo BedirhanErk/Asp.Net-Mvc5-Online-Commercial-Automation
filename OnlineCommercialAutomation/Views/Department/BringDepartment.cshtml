@@ -1,0 +1,21 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Department
+@{
+    ViewBag.Title = "BringDepartment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+<h2>Update Department</h2>
+<br />
+@using (Html.BeginForm("UpdateDepartment", "Department", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Id)
+        @Html.LabelFor(x => x.DepartmentName)
+        @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.DepartmentName, "", new { @style = "color:red" })
+    </div>
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-pencil-alt"></i> Update</button>
+    <a class="btn btn-secondary" href="/Department/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+}

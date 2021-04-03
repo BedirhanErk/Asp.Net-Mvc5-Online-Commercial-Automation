@@ -1,0 +1,113 @@
+﻿@model IEnumerable<OnlineCommercialAutomation.Models.Entities.ClassGroup>
+@{
+    ViewBag.Title = "SimpleTables";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/web4/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Simple Tables</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Action("Partial5", "Statistics")
+                        @Html.Action("Partial1", "Statistics")
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Customer City Table</h3>
+                            </div>
+                            <div class="card-body p-0">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>City</th>
+                                            <th>Progress Bar</th>
+                                            <th style="width: 40px">Piece</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ int no = 0;}
+                                        @foreach (var x in Model)
+                                        {
+                                            <tr>
+                                                <td>@{no++;} @no.</td>
+                                                <td>@x.City</td>
+                                                <td>
+                                                    @if (x.Total >= 1 && x.Total <= 3)
+                                                    {
+                                                        <div class="progress progress-xs">
+                                                            <div class="progress-bar bg-primary" style="width: 55%"></div>
+                                                        </div>
+                                                    }
+                                                    @if (x.Total >= 4 && x.Total <= 6)
+                                                    {
+                                                        <div class="progress progress-xs">
+                                                            <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                                        </div>
+                                                    }
+                                                    @if (x.Total >= 7)
+                                                    {
+                                                        <div class="progress progress-xs progress-striped active">
+                                                            <div class="progress-bar bg-success" style="width: 90%"></div>
+                                                        </div>
+                                                    }
+                                                </td>
+                                                @if (x.Total >= 1 && x.Total <= 3)
+                                                {
+                                                    <td><span class="badge bg-primary">@x.Total</span></td>
+                                                }
+                                                @if (x.Total >= 4 && x.Total <= 6)
+                                                {
+                                                    <td><span class="badge bg-warning">@x.Total</span></td>
+                                                }
+                                                @if (x.Total >= 7)
+                                                {
+                                                    <td><span class="badge bg-success">@x.Total</span></td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        @Html.Action("Partial4", "Statistics")
+                    </div>
+                </div>
+                @Html.Action("Partial2", "Statistics")
+                @Html.Action("Partial3", "Statistics")
+            </div>
+        </section>
+    </div>
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="../../dist/js/demo.js"></script>
+</body>
+</html>
+
+

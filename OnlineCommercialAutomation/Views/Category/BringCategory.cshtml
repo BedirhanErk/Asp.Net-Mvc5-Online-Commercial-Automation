@@ -1,0 +1,21 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Category
+@{
+    ViewBag.Title = "BringCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Update Category</h2>
+<br />
+@using (Html.BeginForm("UpdateCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Id)
+        @Html.LabelFor(x => x.CategoryName)
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })
+    </div>
+    <button class="btn btn-primary" style="width:100px" id="btn1"><i class="fas fa-pencil-alt"></i> Update</button>
+    <a class="btn btn-secondary" href="/Category/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+}
+

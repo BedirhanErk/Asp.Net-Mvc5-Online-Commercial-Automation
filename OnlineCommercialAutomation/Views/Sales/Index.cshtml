@@ -1,0 +1,52 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<SalesMovement>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2 style="margin-left:20px">
+    Sales 
+</h2>
+<br />
+<table id="tbl1" class="table table-bordered table-striped" style="margin-top:20px">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Customer</th>
+            <th>Staff</th>
+            <th>Piece</th>
+            <th>Price</th>
+            <th>Total Amount</th>
+            <th>Date</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+
+            <tr>
+                <td><a href="/Sales/BringSales/@x.Id" class="">@x.Product.ProductsName</a></td>
+                <td><a href="/Sales/BringSales/@x.Id" class="">@x.Current.CurrentsName @x.Current.CurrentsSurname</a></td>
+                <td><a href="/Sales/BringSales/@x.Id" class="">@x.Staff.StaffName @x.Staff.StaffSurname</a></td>
+                <td><a href="/Sales/BringSales/@x.Id" class="">@x.Piece</a></td>
+                <td><a href="/Sales/BringSales/@x.Id" class="">@x.Price ₺</a></td>
+                <td><a href="/Sales/BringSales/@x.Id" class="">@x.TotalAmount ₺</a></td>
+                <td><a href="/Sales/BringSales/@x.Id" class="">@x.Date.ToString("dd/MM/yyyy")</a></td>
+                <td><a href="/Sales/SalesDetails/@x.Id" class="btn btn-outline-info">Details</a></td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

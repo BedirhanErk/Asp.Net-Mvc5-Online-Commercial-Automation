@@ -1,0 +1,26 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Category>
+
+@* Categories *@
+<div class="latest-w3">
+    <div class="container">
+        <h3 class="tittle1">Categories</h3>
+        <div class="latest-grids">
+            @foreach (var x in Model)
+            {
+                <div class="col-md-4 latest-grid" style="margin-bottom:20px">
+                    <div class="latest-top">
+                        <a href="/List/Product/@x.Id">
+                            <img style="width:350px;height:235px" src="@x.Image" class="img-responsive" alt="">
+                            <div class="latest-text">
+                                <h4>@x.CategoryName</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

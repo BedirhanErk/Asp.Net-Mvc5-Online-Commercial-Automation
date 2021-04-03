@@ -1,0 +1,21 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Admin
+@{
+    ViewBag.Title = "UpdateAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Update @Html.ValueFor(x => x.Name)</h2>
+<br />
+@using (Html.BeginForm("UpdateAdmin", "ToDoList", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Id)
+        @Html.LabelFor(x => x.Authority)
+        @Html.DropDownListFor(x => x.Authority, (new SelectList(ViewBag.Authority)), new { @class = "form-control" })
+    </div>
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-pencil-alt"></i> Update</button>
+    <a class="btn btn-secondary" href="/ToDoList/Admins" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+
+}
+<br />
+

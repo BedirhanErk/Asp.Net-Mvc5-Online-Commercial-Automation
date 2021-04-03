@@ -1,0 +1,16 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Department
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Add Department</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.DepartmentName)
+    @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.DepartmentName, "", new { @style = "color:red" })
+    <br />
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-plus"></i> Add</button>
+    <a class="btn btn-secondary" href="/Department/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+</form>

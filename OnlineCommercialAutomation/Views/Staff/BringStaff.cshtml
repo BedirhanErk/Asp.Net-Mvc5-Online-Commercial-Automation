@@ -1,0 +1,36 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Staff
+@{
+    ViewBag.Title = "BringStaff";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Update Staff</h2>
+<br />
+@using (Html.BeginForm("UpdateStaff", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Id)
+        @Html.LabelFor(x => x.StaffName)
+        @Html.TextBoxFor(x => x.StaffName, new { @class = "form-control", @required = "" })
+        <br />
+        @Html.LabelFor(x => x.StaffSurname)
+        @Html.TextBoxFor(x => x.StaffSurname, new { @class = "form-control", @required = "" })
+        <br />
+        <br />
+        @Html.LabelFor(x => x.StaffImage)
+        <input type="file" name="StaffImage" />
+        <br />
+        <br />
+        @Html.LabelFor(x => x.Department)
+        @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.value4, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Address)
+        @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Phone)
+        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary" style="width:100px"><i class="fas fa-pencil-alt"></i> Update</button>
+    </div>
+}

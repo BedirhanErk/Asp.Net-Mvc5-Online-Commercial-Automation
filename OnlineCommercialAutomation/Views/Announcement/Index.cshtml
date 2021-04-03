@@ -1,0 +1,47 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Message>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2 style="margin-left:20px">
+    Announcement <a href="/Announcement/MakeAnnouncement" class="btn btn-primary" style="width:100px;position:absolute;right:50px"><i class="fas fa-plus"></i> Add</a>
+</h2>
+<br />
+<table id="tbl66" class="table table-bordered table-striped" style="margin-top:20px">
+    <thead>
+        <tr>
+            <th>Delete</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td><a href="/Announcement/Delete/@x.MessageId" class="text-danger" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete announcement ?')"><strong>X</strong></a></td>
+                <td><a href="/Announcement/Update/@x.MessageId" class="">@x.Title</a></td>
+                <td><a href="/Announcement/Update/@x.MessageId" class="">@x.Content</a></td>
+                <td><a href="/Announcement/Update/@x.MessageId" class="">@x.Date.ToString("dd/MM/yyyy")</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl66').dataTable({});
+</script>
+
+
+
+

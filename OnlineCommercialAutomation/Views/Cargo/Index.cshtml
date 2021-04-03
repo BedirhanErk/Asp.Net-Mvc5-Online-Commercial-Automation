@@ -1,0 +1,39 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Cargo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("Index", "Cargo", FormMethod.Get))
+{
+    <p>
+        Cargo Tracking Code: @Html.TextBox("p")
+        <input type="submit" value="Search" />
+        <a href="/Cargo/Add" class="btn btn-primary" style="width:100px;position:absolute;right:50px"><i class="fas fa-plus"></i> Add</a>
+    </p>
+}
+<br />
+<table class="table table-bordered table-striped" style="margin-top:20px">
+    <tr>
+        <th>Staff</th>
+        <th>Receiver</th>
+        <th>Date</th>
+        <th>Tracking Code</th>
+        <th>Details</th>
+        <th>Enter Description</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Staff</td>
+            <td>@x.Receiver</td>
+            <td>@x.Date.ToString("dd/MM/yyyy")</td>
+            <td>@x.TrackingCode</td>
+            <td><a href="/Cargo/Details/@x.TrackingCode" class="btn btn-outline-info">Detail</a></td>
+            <td><a href="/Cargo/EnterDescription/@x.TrackingCode" class="btn btn-outline-primary">Enter Description</a></td>
+        </tr>
+    }
+</table>
+<br />

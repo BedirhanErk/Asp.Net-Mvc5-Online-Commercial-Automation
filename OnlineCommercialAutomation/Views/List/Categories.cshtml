@@ -1,0 +1,24 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Category>
+
+<div class="col-md-3 product-agileinfo-grid">
+    <div class="categories">
+        <h3>Categories</h3>
+        <ul class="tree-list-pad">
+            <li>            
+                <ul>
+                    <li>
+                        <ul>
+                            <li><a href="/List/Index">All Products</a></li>
+                            @foreach (var x in Model)
+                            {
+                                <li><a href="/List/Product/@x.Id">@x.CategoryName</a></li>
+                            }
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+

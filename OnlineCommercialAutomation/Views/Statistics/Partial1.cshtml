@@ -1,0 +1,61 @@
+﻿@model IEnumerable<OnlineCommercialAutomation.Models.Entities.ClassGroup2>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Department Staff Numbers</h3>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Department</th>
+                    <th>Progress Bar</th>
+                    <th style="width: 40px">Piece</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int no = 0;}
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@{no++;} @no.</td>
+                        <td>@x.Department</td>
+                        <td>
+                            @if (x.Total >= 1 && x.Total <= 3)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-primary" style="width: 55%"></div>
+                                </div>
+                            }
+                            @if (x.Total >= 4 && x.Total <= 6)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                </div>
+                            }
+                            @if (x.Total >= 7)
+                            {
+                                <div class="progress progress-xs progress-striped active">
+                                    <div class="progress-bar bg-success" style="width: 90%"></div>
+                                </div>
+                            }
+                        </td>
+                        @if (x.Total >= 1 && x.Total <= 3)
+                        {
+                            <td><span class="badge bg-primary">@x.Total</span></td>
+                        }
+                        @if (x.Total >= 4 && x.Total <= 6)
+                        {
+                            <td><span class="badge bg-warning">@x.Total</span></td>
+                        }
+                        @if (x.Total >= 7)
+                        {
+                            <td><span class="badge bg-success">@x.Total</span></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

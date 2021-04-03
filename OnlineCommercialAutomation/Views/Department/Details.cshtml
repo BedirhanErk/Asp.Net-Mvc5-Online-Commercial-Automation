@@ -1,0 +1,32 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Staff>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>
+    Department Details <a href="/Department/Index" class="btn btn-secondary" style="width:100px;position:absolute;right:50px"><i class="fas fa-backspace"></i> Cancel</a>
+</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">@ViewBag.dp</li>
+</ol>
+
+<table class="table table-hover">
+    <tr>
+        <th>Staff</th>
+        <th>Image</th>
+        <th>Sales</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.StaffName @x.StaffSurname</td>
+            <td>
+                <img src="@x.StaffImage" style="width:80px;height:100px" />
+            </td>
+            <td><a href="/Department/DepartmentStaffSales/@x.Id" class="btn btn-outline-info">Sales</a></td>
+        </tr>
+    }
+</table>

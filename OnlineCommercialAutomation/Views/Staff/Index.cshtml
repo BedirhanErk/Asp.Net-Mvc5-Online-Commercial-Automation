@@ -1,0 +1,50 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Staff>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2 style="margin-left:20px">
+    Staff <a href="/Staff/Add" class="btn btn-primary" style="width:100px;position:absolute;right:50px"><i class="fas fa-plus"></i> Add</a>
+</h2>
+<br />
+<table id="tbl1" class="table table-bordered table-striped" style="margin-top:20px">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Image</th>
+            <th>Department</th>
+            <th>Adress</th>
+            <th>Phone</th>
+            <th>Staff Sales</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td><a href="/Staff/BringStaff/@x.Id" class="">@x.StaffName</a></td>
+                <td><a href="/Staff/BringStaff/@x.Id" class="">@x.StaffSurname</a></td>
+                <td>
+                    <img src="@x.StaffImage" style="width:80px;height:100px" />
+                </td>
+                <td><a href="/Staff/BringStaff/@x.Id" class="">@x.Department.DepartmentName</a></td>
+                <td><a href="/Staff/BringStaff/@x.Id" class="">@x.Address</a></td>
+                <td><a href="/Staff/BringStaff/@x.Id" class="">@x.Phone</a></td>
+                <td><a href="/Department/DepartmentStaffSales/@x.Id" class="btn btn-outline-info">Sales</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#tbl1').dataTable({});
+</script>

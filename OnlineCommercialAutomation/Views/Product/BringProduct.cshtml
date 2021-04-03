@@ -1,0 +1,43 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.Product
+@{
+    ViewBag.Title = "BringProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Update Product</h2>
+<br />
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.Id)
+    @Html.LabelFor(x => x.ProductsName)
+    @Html.TextBoxFor(x => x.ProductsName, new { @class = "form-control", @required = "" })
+    <br />
+    @Html.LabelFor(x => x.Brand)
+    @Html.TextBoxFor(x => x.Brand, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Stock)
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.BuyingPrice)
+    @Html.TextBoxFor(x => x.BuyingPrice, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BuyingPrice, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.SalesPrice)
+    @Html.TextBoxFor(x => x.SalesPrice, new { @class = "form-control", @required = "" })
+    <br />
+    @Html.LabelFor(x => x.CategoryId)
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.value2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.ProductImage)
+    <input type="file" name="ProductImage" />
+    <br />
+    @Html.LabelFor(x => x.Explanation)
+    @Html.TextAreaFor(x => x.Explanation, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Installment)
+    @Html.TextBoxFor(x => x.Installment, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-pencil-alt"></i> Update</button>
+    <a class="btn btn-secondary" href="/Product/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+}
+<br />

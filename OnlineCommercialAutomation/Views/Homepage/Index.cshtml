@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Action("Slider", "Homepage")
+<!DOCTYPE HTML>
+<html>
+<body>
+    <div class="content">        
+        @Html.Action("NewArrivals", "Homepage")
+        @Html.Action("Categories", "Homepage")
+    </div>
+    @Html.Action("BestSellers", "Homepage")
+</body>
+</html>

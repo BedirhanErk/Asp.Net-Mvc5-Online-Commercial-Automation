@@ -1,0 +1,39 @@
+﻿@model OnlineCommercialAutomation.Models.Entities.SalesMovement
+@{
+    ViewBag.Title = "BringSales";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Update Sales</h2>
+<br />
+@using (Html.BeginForm("UpdateSales", "Sales", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Id)
+    @Html.LabelFor(x => x.Product)
+    @Html.DropDownListFor(x => x.ProductId, (List<SelectListItem>)ViewBag.values1, new { @class = "form-control" })
+    <br />
+    <label>Customer</label>
+    @Html.DropDownListFor(x => x.CurrentId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Staff)
+    @Html.DropDownListFor(x => x.StaffId, (List<SelectListItem>)ViewBag.values3, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Piece)
+    @Html.TextBoxFor(x => x.Piece, new { @class = "form-control", @required = "" })
+    @Html.ValidationMessageFor(x => x.Piece, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Price)
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control", @required = "" })
+    @Html.ValidationMessageFor(x => x.Price, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.TotalAmount)
+    @Html.TextBoxFor(x => x.TotalAmount, new { @class = "form-control", @required = "" })
+    @Html.ValidationMessageFor(x => x.TotalAmount, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Date)
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control", @required = "" })
+    @Html.ValidationMessageFor(x => x.Date, "", new { @style = "color:red"})
+    <br />
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-pencil-alt"></i> Update</button>
+    <a class="btn btn-secondary" href="/Sales/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> Cancel</a>
+}

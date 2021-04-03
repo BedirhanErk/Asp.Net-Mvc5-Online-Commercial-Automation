@@ -1,0 +1,125 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Message>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/web4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/web4/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Profile</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src="@ViewBag.img"
+                                     alt="User profile picture">
+                            </div>
+                            <h3 class="profile-username text-center">@ViewBag.nmsrn</h3>
+                        </div>
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">About Me</h3>
+                        </div>
+                        <div class="card-body">
+                            <strong><i class="fas fa-mail-bulk mr-1"></i> Email</strong>
+                            <p class="text-muted">
+                                @ViewBag.cm
+                            </p>
+                            <hr>
+                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                            <p class="text-muted">@ViewBag.cy</p>
+                        </div>
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">My Spending</h3>
+                        </div>
+                        <div class="card-body">
+                            <strong><i class="fas fa-shopping-basket mr-1"></i> Total Number of Purchases</strong>
+                            <p class="text-muted">
+                                @ViewBag.ts
+                            </p>
+                            <hr>
+                            <strong><i class="fas fa-dollar-sign mr-1"></i> Total Money I Spent</strong>
+                            <p class="text-muted">@ViewBag.tp ₺</p>
+                            <hr>
+                            <strong><i class="fas fa-puzzle-piece mr-1"></i> Total Number of Products Purchased</strong>
+                            <p class="text-muted">@ViewBag.tpe</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Messages</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    @foreach (var x in Model)
+                                    {
+                                        <div class="post">
+                                            <div class="user-block">
+                                                <img class="img-circle img-bordered-sm" src="~/web4/dist/img/credit/user3.jfif" alt="user image">
+                                                <span class="username">
+                                                    <a>@x.Sender</a>
+                                                    <a href="/CurrentPanel/Delete2/@x.MessageId" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                                                </span>
+                                                <span class="description">@x.Date.ToShortDateString()</span>
+                                            </div>
+                                            <p>Title : @x.Title</p>
+                                            <p>
+                                               @x.Content
+                                            </p> 
+                                        </div>
+                                    }
+                                </div>
+                                <div class="tab-pane" id="timeline">
+                                    @Html.Action("Partial2", "CurrentPanel")
+                                </div>
+                                <div class="tab-pane" id="settings">
+                                    @Html.Action("Partial1", "CurrentPanel")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+    <script src="~/web4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/web4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/web4/dist/js/adminlte.min.js"></script>
+    <script src="~/web4/dist/js/demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<Message>
+@{
+    ViewBag.Title = "MessageDetails";
+    Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+}
+<br />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/web4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/web4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/web4/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Read Mail</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="/CurrentPanel/IncomingMessages/" class="btn btn-primary btn-block mb-3">Inbox</a>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Folders</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="nav nav-pills flex-column">
+                            <li class="nav-item active">
+                                <a href="/CurrentPanel/IncomingMessages/" class="nav-link">
+                                    <i class="fas fa-inbox"></i> Inbox
+                                    <span class="badge bg-gradient-blue float-right">@ViewBag.d1</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/CurrentPanel/OutgoingMessages/" class="nav-link">
+                                    <i class="far fa-envelope"></i> Sent
+                                    <span class="badge bg-gradient-gray float-right">@ViewBag.d2</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/CurrentPanel/Starry" class="nav-link">
+                                    <i class="fas fa-star"></i> Starry
+                                    <span class="badge bg-gradient-navy float-right">@ViewBag.starry</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/CurrentPanel/Trash/" class="nav-link">
+                                    <i class="far fa-trash-alt"></i> Trash
+                                    <span class="badge bg-gradient-red float-right">@ViewBag.d3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Read Mail</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="mailbox-read-info">
+                            @foreach (var x in Model)
+                            {
+                                <h5 style="margin-bottom:5px">
+                                    Title: @x.Title
+                                    <span class="mailbox-read-time float-right">@x.Date.ToShortDateString()</span>
+                                </h5>
+                                <h6>
+                                    From: @x.Sender
+                                </h6>
+                                <br />
+                                <p>
+                                    @x.Content
+                                </p>
+                                <br />
+                                <div class="card-footer">
+                                    <div class="float-right">
+                                        <a href="/CurrentPanel/Delete/@x.MessageId" class="btn btn-default" style="margin-right:5px"><i class="far fa-trash-alt"></i></a>
+                                        <a style="margin-right:5px" href="javascript:window.print()" class="btn btn-default"><i class="fas fa-print"></i></a>
+                                        <a href="/CurrentPanel/AddStarry/@x.MessageId" class="btn btn-default" style="margin-right:5px"><i class="far fa-star"></i></a>
+                                        <a href="/CurrentPanel/IncomingMessages/" class="btn btn-default" style="margin-right:5px"><i class="fas fa-backward"></i></a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+    <script src="~/web4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/web4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/web4/dist/js/adminlte.min.js"></script>
+    <script src="~/web4/dist/js/demo.js"></script>
+</body>
+</html>
+

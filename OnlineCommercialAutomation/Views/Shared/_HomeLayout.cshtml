@@ -1,0 +1,146 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>WANTED.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Chairs Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link rel="stylesheet" href="~/webhomhe/css/bootstrap.css">
+    <link href="~/webhomhe/css/css_slider.css" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="~/webhomhe/css/style.css" type="text/css" media="all" />
+    <link href="~/webhomhe/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+</head>
+<body>
+    <div class="main-top" id="home">
+        <header>
+            <div class="container-fluid">
+                <div class="header d-md-flex align-items-center py-sm-3 py-2 px-sm-2 px-1">
+                    <div id="logo">
+                        <h1><a href="/Homepage/Index">WANTED</a></h1>
+                    </div>
+                    <div class="nav_w3ls ml-5">
+                        <nav>
+                            <label for="drop" class="toggle">Menu</label>
+                            <input type="checkbox" id="drop" />
+                            <ul class="menu">
+                                <li><a href="/HomePage/Index">Home</a></li>
+                                <li><a href="/List/Product">Products</a></li>
+                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    <li><a href="/CurrentPanel/MyOrder">My Orders</a></li>
+                                    <li><a href="/CurrentPanel/CargoTracking">Cargo Tracking</a></li>
+                                    <li><a href="/CurrentPanel/IncomingMessages">Messagess</a></li>
+                                }
+                                <li><a href="/About/Index">About Us</a></li>
+                                <li><a href="/Contact/Index">Help</a></li>
+                            </ul>
+                            <ul style="position:absolute;right:60px">
+                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        @Html.ActionLink(HttpContext.Current.User.Identity.Name, "Index", "CurrentPanel", null, null)
+                                    </li>
+                                    <li><a href="/Login/Logout" class="drop-text">Sign Out</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Login/Index">Register</a></li>
+                                    <li><a href="/Login/Index">Login</a></li>
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer class="bg-li py-5">
+        <div class="container py-xl-5 py-lg-3">
+            <div class="row footer-grids">
+                <div class="col-lg-4 footer-grid mt-lg-3">
+                    <h2>
+                        <a class="logo-2" href="/Homepage/Index">WANTED</a>
+                    </h2>
+                </div>
+                <div class="col-lg-2 col-sm-6 footer-grid mt-lg-3 mt-4">
+                    <h3 class="mb-sm-4 mb-3 pb-3">Most Wanted</h3>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="/List/Headphone">Headphone</a>
+                        </li>
+                        <li>
+                            <a href="/List/Telephone">Telephone</a>
+                        </li>
+                        <li>
+                            <a href="/List/Computer">Computer</a>
+                        </li>
+                        <li>
+                            <a href="/List/Television">Television</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-sm-6 footer-grid footer-contact mt-lg-3 mt-4" style="margin-left:50px">
+                    <h3 class="mb-sm-4 mb-3 pb-3"> Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li class="mt-2">
+                            <a href="mailto:erkilicbedirhan@gmail.com">erkilicbedirhan@gmail.com</a>
+                        </li>
+                        <li>
+                            0 539 899 55 45
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-sm-6 footer-grid-social mt-lg-3 mt-4" style="margin-left:60px">
+                    <h3 class="mb-sm-4 mb-3 pb-3">Catch on Social</h3>
+                    <ul class="list-unstyled">
+                        <li class="d-inline">
+                            <a href="https://www.facebook.com/people/Bedirhan-Erk%C4%B1l%C4%B1%C3%A7/100051665255398"><span class="fa fa-facebook"></span></a>
+                        </li>
+                        <li class="d-inline">
+                            <a href="https://www.linkedin.com/in/bedirhan-erk%C4%B1l%C4%B1%C3%A7-7221761a1/"><span class="fa fa-linkedin-square"></span></a>
+                        </li>
+                        <li class="d-inline">
+                            <a href="https://twitter.com/bedirhan_erk"><span class="fa fa-twitter"></span></a>
+                        </li>
+                        <li class="d-inline">
+                            <a href="https://www.instagram.com/erkilicbedirhan/?hl=tr"><span class="fa fa-instagram"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <div class="copy_right text-center py-3 position-relative">
+        <p>
+            © 2021 Wanted. All rights reserved | Developed by
+            <a href="https://www.bedirhanerkilic.com/">Bedirhan Erkılıç</a>
+        </p>
+
+    </div>
+
+</body>
+
+</html>

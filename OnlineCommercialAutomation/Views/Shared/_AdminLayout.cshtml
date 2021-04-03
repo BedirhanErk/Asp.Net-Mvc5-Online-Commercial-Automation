@@ -1,0 +1,164 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Online Commercial Automation</title>
+    <link href="~/Web/dist/css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="/ToDoList/Index">Admin Dashbord</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button>
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+            </div>
+        </form>
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li style="margin-top:6px;margin-right:5px">
+                @Html.ActionLink(HttpContext.Current.User.Identity.Name, "Index", "ToDoList", null, null)
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="/Admin/Logout" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-power-off fa-fw"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Transactions</div>
+                        <a class="nav-link" href="/ToDoList/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-eye"></i></div>
+                            Dashboard
+                        </a>
+                        <a class="nav-link" href="/Category/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Categories
+                        </a>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Products
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="/Product/Index">Product List</a><a class="nav-link" href="/Product/Gallery">Product Gallery</a></nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <div class="sb-nav-link-icon"><i class="fas fa-male"></i> <i class="fas fa-female"></i></div>
+                            Staff
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseExample" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="/Staff/Index">Staff List</a><a class="nav-link" href="/Staff/StaffList">Staff Details</a></nav>
+                        </div>
+                        <a class="nav-link" href="/Department/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
+                            Departments
+                        </a>
+                        <a class="nav-link" href="/Current/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Customer
+                        </a>
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <a class="nav-link" href="/ToDoList/Admins">
+                                <div class="sb-nav-link-icon"><i class="fas fa-lock"></i></div>
+                                Admins
+                            </a>
+                        }
+                        <a class="nav-link" href="/Contact/Contact">
+                            <div class="sb-nav-link-icon"><i class="fas fa-comment"></i></div>
+                            Help Messages
+                        </a>
+                        <a class="nav-link" href="/Announcement/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-bullhorn"></i></div>
+                            Announcement
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Report & Invoice</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInvoice" aria-expanded="false" aria-controls="collapseInvoice">
+                            <div class="sb-nav-link-icon"><i class="fas fa-barcode"></i></div>
+                            Invoice
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseInvoice" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="/Invoice/Dynamic">Invoice</a><a class="nav-link" href="/Invoice/InvoiceList">Print Invoice</a></nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSales" aria-expanded="false" aria-controls="collapseSales">
+                            <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                            Sales
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseSales" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="/Sales/Index">Sales</a><a class="nav-link" href="/Sales/SaleList">Print Sales</a></nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGraphic" aria-expanded="false" aria-controls="collapseGraphic">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-pie"></i></div>
+                            Graphics
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseGraphic" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="/Graphic/Index5">Pie Chart</a><a class="nav-link" href="/Graphic/Index6">Line Chart</a><a class="nav-link" href="/Graphic/Index7">Column Chart</a></nav>
+                        </div>
+                        <a class="nav-link" href="/Statistics/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-database"></i></div>
+                            Statistics
+                        </a>
+                        <a class="nav-link" href="/Statistics/SimpleTables">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Simple Tables
+                        </a>
+                        <a class="nav-link" href="/Cargo/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
+                            Cargo
+                        </a>
+                        <a class="nav-link" href="/QR/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-qrcode"></i></div>
+                            QR
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small"></div>
+                    Online Commercial Automation
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">2021 &copy; Online Commercial Automation</div>
+                        <div>
+                            <a>Developed by</a>
+                            &middot;
+                            <a href="https://www.bedirhanerkilic.com/">Bedirhan Erkılıç</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/Web/dist/js/scripts.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

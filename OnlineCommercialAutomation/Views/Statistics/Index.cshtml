@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/web2/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/web2/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/web2/css/font-awesome.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Metro Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="js/zingchart.min.js"></script>
+    <script src="js/zingchart.jquery.js"></script>
+    <script src="js/jquery.easydropdown.js"></script>
+    <script src="js/jquery.nicescroll.js"></script>
+    <link href="css/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="~/web2/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <link href="~/web2/css/nav.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/web2/js/main.js"></script>
+    <script src="~/web2/js/Chart1.js"></script>
+</head>
+<body>
+    <div class="total-content">
+        <div class="list_of_members">
+            <div class="sales" style="background-color:#1abc9c">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d1</h4>
+                    <p>Total Current</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="new-users" style="background-color:#2ecc71">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d2</h4>
+                    <p>Number Of Products</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="orders" style="background-color:#3498db">
+
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d3</h4>
+                    <p>Number of Staff</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="visitors" style="background-color:#9b59b6">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d4</h4>
+                    <p>Number of Categry</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="total-content">
+        <div class="list_of_members">
+            <div class="sales" style="background-color:#16a085">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d5</h4>
+                    <p>Total Stock</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="new-users" style="background-color:#27ae60">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d6</h4>
+                    <p>Number of Brand</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="orders" style="background-color:#2980b9">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d7</h4>
+                    <p>Critical Level</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="visitors" style="background-color:#8e44ad">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d8</h4>
+                    <br />
+                    <p>Max Price Product</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="total-content">
+        <div class="list_of_members">
+            <div class="sales" style="background-color:#f1c40f">
+                <div class="icon-text"  style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d9</h4>
+                    <br />
+                    <p>Min Price Product</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="new-users" style="background-color:#e67e22">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d10</h4>
+                    <p>Max Brand</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="orders" style="background-color:#e74c3c">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d11</h4>
+                    <p>Number of Fridges</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="visitors" style="background-color:#95a5a6">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d12</h4>
+                    <p>Number of Laptops</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="total-content">
+        <div class="list_of_members">
+            <div class="sales" style="background-color:#f39c12">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d13</h4>
+                    <p>Top Seller</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="new-users" style="background-color:#d35400">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d14</h4>
+                    <p>Amount in the Safe</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="orders" style="background-color:#c0392b">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d15</h4>
+                    <p>Today's Sales</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="visitors" style="background-color:#7f8c8d">
+                <div class="icon-text" style="width: 220px; height: 80px">
+                    <h4 style="color:white">@ViewBag.d16</h4>
+                    <p>Today's Safe</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</body>
+</html>
+

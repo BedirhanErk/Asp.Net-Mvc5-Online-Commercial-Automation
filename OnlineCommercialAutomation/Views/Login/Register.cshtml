@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE HTML>
+<html>
+<body>
+    <div class="content">
+        <div class="login">
+            <div class="main-agileits">
+                <div class="form-w3agile form1">
+                    <h3>Register</h3>
+                    <form action="/Login/Register" method="post">
+                        <div class="key">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input type="text" value="Name" name="CurrentsName" id="CurrentsName" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="key">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <input type="text" value="Surname" name="CurrentsSurname" id="CurrentsSurname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Surname';}" required="">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="key">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <input type="text" value="City" name="CurrentsCity" id="CurrentsCity" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'City';}" required="">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="key">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <input type="text" value="Email" name="CurrentsMail" id="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="key">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <input type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                            <div class="clearfix"></div>
+                        </div>                      
+                        <input type="submit" style="width:334px" value="Create Account">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

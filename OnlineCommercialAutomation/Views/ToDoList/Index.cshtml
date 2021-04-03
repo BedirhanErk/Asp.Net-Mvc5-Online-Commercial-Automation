@@ -1,0 +1,182 @@
+﻿@using OnlineCommercialAutomation.Models.Entities
+@model List<ToDoList>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/web4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/web4/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="~/web4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/web4/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="~/web4/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/web4/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="~/web4/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/web4/plugins/summernote/summernote-bs4.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <section class="content">
+            <div class="container-fluid">
+
+                @* Dashboard Statistic *@
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>@ViewBag.v1</h3>
+                                <p>Total Customer</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-android-contact"></i>
+                            </div>
+                            <a href="/Current/Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>@ViewBag.v2</h3>
+                                <p>Total Product</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-android-cart"></i>
+                            </div>
+                            <a href="/Product/Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>@ViewBag.v3</h3>
+                                <p>Total Category</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-clipboard"></i>
+                            </div>
+                            <a href="/Category/Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>@ViewBag.v4</h3>
+                                <p>Total City</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-android-plane"></i>
+                            </div>
+                            <a href="/Current/Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                @* Edit Home Page *@
+                <h3>Edit Home Page</h3>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a href="/ToDoList/Slider">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-sliders-h"></i></span>
+                                <div class="info-box-content">
+                                    <span style="color:black" class="info-box-text">Slider</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a href="/ToDoList/NewArrivals">
+                            <div class="info-box mb-3">
+                                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-eye"></i></span>
+                                <div class="info-box-content">
+                                    <span style="color:black" class="info-box-text">New Arrivals</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="clearfix hidden-md-up"></div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a href="/ToDoList/Categories">
+                            <div class="info-box mb-3">
+                                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-sort-alpha-up"></i></span>
+                                <div class="info-box-content">
+                                    <span style="color:black" class="info-box-text">Categories</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a href="/ToDoList/BestSellers">
+                            <div class="info-box mb-3">
+                                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-sort-amount-up"></i></span>
+                                <div class="info-box-content">
+                                    <span style="color:black" class="info-box-text">Best Sellers</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                @* ToDoList *@
+                <div>
+                    <section class="col-md-12">
+                        <div class="card" style="height:700px">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="ion ion-clipboard mr-1"></i>
+                                    To Do List
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <ul class="todo-list" data-widget="todo-list">
+                                    @foreach (var x in Model)
+                                    {
+                                        <li>
+                                            <span class="text"><input type="checkbox" style="margin-right:10px" />@x.Title</span>
+                                            <a class="badge badge-warning" style="margin-left:10px">@x.Date.ToString("dd/MM/yyyy")</a>
+                                            <a class="badge badge-warning" style="margin-left:10px">@x.Hour <i class="far fa-clock"></i></a>
+                                            <div class="tools">
+                                                <a href="/ToDoList/BringToDoList/@x.Id"><i class="fas fa-edit" style="color:darkblue"></i></a>
+                                                <a href="/ToDoList/Delete/@x.Id" style="margin-left:10px"><i class="fas fa-trash" style="color:red"></i></a>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <a href="/ToDoList/Add" class="btn btn-outline-primary float-right"><i class="fas fa-plus"></i> Add Item</a>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="~/web4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/web4/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script>$.widget.bridge('uibutton', $.ui.button)</script>
+    <script src="~/web4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/web4/plugins/chart.js/Chart.min.js"></script>
+    <script src="~/web4/plugins/sparklines/sparkline.js"></script>
+    <script src="~/web4/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/web4/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <script src="~/web4/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <script src="~/web4/plugins/moment/moment.min.js"></script>
+    <script src="~/web4/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/web4/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/web4/plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="~/web4/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="~/web4/dist/js/adminlte.js"></script>
+    <script src="~/web4/dist/js/pages/dashboard.js"></script>
+    <script src="~/web4/dist/js/demo.js"></script>
+</body>
+</html>

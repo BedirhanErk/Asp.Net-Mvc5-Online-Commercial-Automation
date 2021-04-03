@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE HTML>
+<html>
+<body>
+    <div class="content">
+        <div class="login">
+            <div class="main-agileits">
+                <div class="form-w3agile">
+                    <h3>Login</h3>
+                    <form action="/Login/CurrentLogin" method="post">
+                        <div class="key">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <input type="text" value="Email" name="CurrentsMail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="key">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <input type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                            <div class="clearfix"></div>
+                        </div>
+                        <input type="submit" style="width:334px" value="Login">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
