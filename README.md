@@ -79,7 +79,7 @@ Front End kısmında bulunan sayfalar şu şekildedir.
  
 ## Admin Panel
 
-![ezgif-4-21b6e09e45e6](https://user-images.githubusercontent.com/65186980/113510368-43662280-9563-11eb-88bf-f5ac656c941d.gif)
+![ezgif-2-4a9a1561ec0f](https://user-images.githubusercontent.com/65186980/113511881-c048ca80-956a-11eb-970a-d6304412faef.gif)
 
 Admin Panel'de şu sayfalar vardır
 
