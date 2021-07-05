@@ -112,6 +112,7 @@ namespace OnlineCommercialAutomation.Controllers
             ViewBag.d3 = values5;
             var starry = c.Messages.Where(x => x.Status == true && x.Starry == true).Count(x => x.Receiver == values || x.Sender == values).ToString();
             ViewBag.starry = starry;
+
             m.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
             m.Sender = values;
             m.Status = true;
