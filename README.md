@@ -1,4 +1,4 @@
-# Asp.Net-Mvc5-Online-Commercial-Automation
+# Asp.Net Mvc5 Online Ticari Otomasyon
 ## Online Commercial Automation
 
  Bu proje **Asp.Net Mvc5** ile geliştirilmiştir. Projede **Html5**, **Css3**, **Js**, **Bootstrap**, **Entity Framework** gibi teknolojilerde kullanılmıştır. Projede kullanılan eklentilerinden bazıları şunlardır: **DataTables**, **Google Chart**. Proje **Entity Framework Code First** yöntemi ile geliştirilmiştir. Ayrıca projede Linq sorguları üzerinden **Trigger**, **Procedure** gibi SQL yapıları kullanılmıştır. Veritabanı olarak MsSql kullanımıştır. Proje kurulumu ve detaylı bilgi aşağıda verilmiştir.
